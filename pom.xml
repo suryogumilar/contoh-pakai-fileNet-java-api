@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.metrasys</groupId>
+	<artifactId>contoh-filenet-java-api</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- Properties -->
+	<!-- =============================================================== -->
+	<properties>
+		<!-- =============================================================== -->
+		<!-- Library V E R S I O N S -->
+		<!-- =============================================================== -->
+
+		<!-- IBM FILENET LIB -->
+		<!-- xml -->
+		<com.ibm.stax-api.version>1.0.0</com.ibm.stax-api.version>
+		<com.ibm.xml.xlxp.version>1.1.19</com.ibm.xml.xlxp.version>
+		<!-- Content Engine -->
+		<com.ibm.filenet.jace.version>5.2.1.3</com.ibm.filenet.jace.version>
+		<!-- Process Engine -->
+		<com.ibm.filenet.pe.version>5.2.1</com.ibm.filenet.pe.version>
+		<!-- IBM Content Navigator -->
+		<com.ibm.ecm.content.navigator.version>20150603_01</com.ibm.ecm.content.navigator.version>
+		<com.ibm.ws.prereq.commonj-twm.version>sr16fp3-20141219_01</com.ibm.ws.prereq.commonj-twm.version>
+
+		<!-- J2EE connector -->
+		<com.ibm.ecm.j2ee.connector.version>1.4.1</com.ibm.ecm.j2ee.connector.version>
+
+		<!-- Servlet api -->
+
+		<servlet.api.version>3.1.0</servlet.api.version>
+
+		<!-- JAXB -->
+		<jaxb-api.version>2.3.0-b170201.1204</jaxb-api.version>
+
+		<!-- Logging -->
+		<log4j.version>1.2.17</log4j.version>
+
+		<!-- testing -->
+		<junit.version>4.11</junit.version>
+
+
+		<!-- =============================================================== -->
+		<!-- MAVEN PLUGINS -->
+		<!-- =============================================================== -->
+		<maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+		<maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<maven-source-plugin.version>2.4</maven-source-plugin.version><!-- 2.2.1 -->
+		<maven.yuicompressor.version>1.3.2</maven.yuicompressor.version>
+		<maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+		<maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+
+		<!-- Java version, Source Encoding -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source.version>1.8</maven.compiler.source.version>
+		<maven.compiler.target.version>1.8</maven.compiler.target.version>
+
+	</properties>
+	<dependencies>
+
+		<!-- IBM XML APIs -->
+		<!-- needed to parse the return message from Filenet/ecm API -->
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>com.ibm.stax-api</artifactId>
+			<version>${com.ibm.stax-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>com.ibm.xml.xlxp.scanner</artifactId>
+			<version>${com.ibm.xml.xlxp.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>com.ibm.xml.xlxp.scanner.utils</artifactId>
+			<version>${com.ibm.xml.xlxp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>com.ibm.filenet.jace</artifactId>
+			<version>${com.ibm.filenet.jace.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ibm</groupId>
+			<artifactId>com.ibm.ecm.j2ee.connector</artifactId>
+			<version>${com.ibm.ecm.j2ee.connector.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+	</dependencies>
+	<!-- ===================== Build ===================== -->
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>${maven-clean-plugin.version}</version>
+				<configuration>
+					<failOnError>false</failOnError>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${maven.compiler.source.version}</source>
+					<target>${maven.compiler.target.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>${maven-jar-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
+</project>
