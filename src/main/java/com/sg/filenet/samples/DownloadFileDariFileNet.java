@@ -1,6 +1,5 @@
 package com.sg.filenet.samples;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +9,8 @@ import java.util.List;
 
 import javax.security.auth.Subject;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.filenet.api.collection.ContentElementList;
 import com.filenet.api.collection.RepositoryRowSet;
@@ -28,7 +28,7 @@ import com.filenet.api.query.SearchScope;
 import com.filenet.api.util.UserContext;
 
 public class DownloadFileDariFileNet {
-	private static Logger logger = Logger.getLogger(DownloadFileDariFileNet.class.getName());
+	private static Logger logger = LogManager.getLogger(DownloadFileDariFileNet.class.getName());
 	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
 	private static String password = "P4ssw0rd";

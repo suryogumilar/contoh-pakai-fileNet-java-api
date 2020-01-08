@@ -9,7 +9,8 @@ import java.util.Date;
 
 import javax.security.auth.Subject;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.filenet.api.collection.ContentElementList;
 import com.filenet.api.constants.AutoUniqueName;
@@ -18,16 +19,16 @@ import com.filenet.api.constants.DefineSecurityParentage;
 import com.filenet.api.constants.RefreshMode;
 import com.filenet.api.core.Connection;
 import com.filenet.api.core.ContentTransfer;
+import com.filenet.api.core.Document;
 import com.filenet.api.core.Domain;
 import com.filenet.api.core.Factory;
 import com.filenet.api.core.Folder;
 import com.filenet.api.core.ObjectStore;
 import com.filenet.api.core.ReferentialContainmentRelationship;
 import com.filenet.api.util.UserContext;
-import com.filenet.api.core.Document;
 
 public class UploadFileKeFileNet {
-	private static Logger logger = Logger.getLogger(UploadFileKeFileNet.class.getName());
+	private static Logger logger = LogManager.getLogger(UploadFileKeFileNet.class.getName());
 	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
 	private static String password = "P4ssw0rd";

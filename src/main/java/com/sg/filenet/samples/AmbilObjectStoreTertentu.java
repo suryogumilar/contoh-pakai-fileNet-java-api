@@ -2,15 +2,16 @@ package com.sg.filenet.samples;
 
 import javax.security.auth.Subject;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.filenet.api.core.Connection;
 import com.filenet.api.core.Domain;
 import com.filenet.api.core.Factory;
-import com.filenet.api.util.UserContext;
 import com.filenet.api.core.ObjectStore;
+import com.filenet.api.util.UserContext;
 public class AmbilObjectStoreTertentu {
-	private static Logger logger = Logger.getLogger(AmbilObjectStoreTertentu.class.getName());
+	private static Logger logger = LogManager.getLogger(AmbilObjectStoreTertentu.class.getName());
 	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
 	private static String password = "P4ssw0rd";

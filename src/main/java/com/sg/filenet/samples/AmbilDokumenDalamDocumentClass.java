@@ -4,20 +4,21 @@ import java.util.Iterator;
 
 import javax.security.auth.Subject;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.filenet.api.collection.EngineCollection;
+import com.filenet.api.collection.IndependentObjectSet;
 import com.filenet.api.core.Connection;
+import com.filenet.api.core.Document;
 import com.filenet.api.core.Domain;
 import com.filenet.api.core.Factory;
 import com.filenet.api.core.ObjectStore;
-import com.filenet.api.util.UserContext;
-import com.filenet.api.query.SearchSQL;
-import com.filenet.api.query.SearchScope;
-import com.filenet.api.collection.IndependentObjectSet;
-import com.filenet.api.core.Document;
 import com.filenet.api.property.Properties;
 import com.filenet.api.property.Property;
+import com.filenet.api.query.SearchSQL;
+import com.filenet.api.query.SearchScope;
+import com.filenet.api.util.UserContext;
 
 public class AmbilDokumenDalamDocumentClass {
 	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
@@ -25,7 +26,7 @@ public class AmbilDokumenDalamDocumentClass {
 	private static String password = "P4ssw0rd";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
 	private static String objectStoreName = "PROD-OBJS";
-	private static Logger logger = Logger.getLogger(AmbilDokumenDalamDocumentClass.class.getName());
+	private static Logger logger = LogManager.getLogger(AmbilDokumenDalamDocumentClass.class.getName());
 
 	public static void main(String[] args) {
 		Connection connection = Factory.Connection.getConnection(url);

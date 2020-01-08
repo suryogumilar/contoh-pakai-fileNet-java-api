@@ -4,7 +4,8 @@ import java.util.Iterator;
 
 import javax.security.auth.Subject;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.filenet.api.collection.RepositoryRowSet;
 import com.filenet.api.constants.RefreshMode;
@@ -26,7 +27,7 @@ public class UpdateMetadataDokumen {
 	private static String password = "P4ssw0rd";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
 	private static String objectStoreName = "PROD-OBJS";
-	private static Logger logger = Logger.getLogger(UpdateMetadataDokumen.class.getName());
+	private static Logger logger = LogManager.getLogger(UpdateMetadataDokumen.class.getName());
 	private static String documentClass = "Dokumen_Invoice";
 
 	public static void main(String[] argd) {
