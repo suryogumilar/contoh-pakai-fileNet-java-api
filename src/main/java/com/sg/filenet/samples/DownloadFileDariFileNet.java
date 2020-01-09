@@ -50,7 +50,7 @@ public class DownloadFileDariFileNet {
 		
 		logger.info("object store name : "+objectStore.get_DisplayName());
 
-		String sql1 = "SELECT * FROM "+documentClass+" WHERE Nama_Dokumen= 'InvoiceABC.pdf' Author = 'Suryo Gumilar' ";
+		String sql1 = "SELECT * FROM "+documentClass+" WHERE Nama_Dokumen= 'InvoiceABC.pdf' AND Author = 'Suryo Gumilar' ";
 		Iterator<RepositoryRow> ceQueryIterator = CEQuery(sql1, objectStore);
 		while (ceQueryIterator.hasNext()) {
 
@@ -72,8 +72,9 @@ public class DownloadFileDariFileNet {
 				try {
 					FileOutputStream fos = new FileOutputStream("C:/folder_untuk_save_ke_lokal_pc/namaDockumentYangakanDisave.pdf");
 					byte[] b = new byte[512];
-					while (is.read(b) > 0) {
-						fos.write(b);
+					int readByte=0;
+					while ((readByte = is.read(b)) > 0) {
+						fos.write(b,0,readByte);
 						fos.flush();
 					}
 					fos.close();

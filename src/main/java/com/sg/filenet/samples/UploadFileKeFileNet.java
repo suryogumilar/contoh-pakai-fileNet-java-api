@@ -55,6 +55,7 @@ public class UploadFileKeFileNet {
 		String fileName = "InvoiceABC";
 
 		com.filenet.api.property.Properties ppProperties = documentNew.getProperties();
+		ppProperties.putValue("DocumentTitle", fileName); // DocumentTitle adalah property default untuk menyimpan nama file, sebaiknya diisi untuk memudahkan
 		ppProperties.putValue("Tanggal_Invoice", new Date());
 		ppProperties.putValue("Nama_Dokumen", fileName); // nama dokumen bisa juga sebagai metadata 
 		ppProperties.putValue("Author", "Suryo Gumilar"); // nama dokumen bisa juga sebagai metadata 

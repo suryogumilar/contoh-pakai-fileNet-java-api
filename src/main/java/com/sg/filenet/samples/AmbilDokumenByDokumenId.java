@@ -32,7 +32,7 @@ public class AmbilDokumenByDokumenId {
 		ObjectStore objectStore = Factory.ObjectStore.fetchInstance(domain, objectStoreName, null);
 		
 		// docId yang akan di ambil
-		String docId = "";
+		String docId = "{80E0896F-0000-CE13-A08D-5796456B9AFF}";
 		Document document = Factory.Document.fetchInstance(objectStore,new Id(docId), null);
 		if(document!=null) {
 			logger.debug("doc:" + document.get_Name());

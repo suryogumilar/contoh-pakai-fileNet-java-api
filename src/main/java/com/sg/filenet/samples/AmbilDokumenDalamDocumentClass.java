@@ -42,7 +42,7 @@ public class AmbilDokumenDalamDocumentClass {
 		// untuk mencari atau mengambil seluruh dokumen dalam suatu document class
 		// digunakan query language
 
-		String documentClass = "Invoice_Document";
+		String documentClass = "Invoice_Document"; // yang dipakai adalah symbolic name dari suatu doc class
 		String cequery = "SELECT * FROM " + documentClass;
 
 		Iterator<?> object = CEQueryAsObjects(cequery, 10, objectStore);
@@ -52,6 +52,7 @@ public class AmbilDokumenDalamDocumentClass {
 				Document doc = (Document) obj;
 				Properties properties = doc.getProperties();
 				logger.debug("doc:" + doc.get_Name()); // nama dokumen (metadata)
+				logger.debug("doc id:" + doc.get_Id()); // id dokumen (metadata)
 				Property dueDate = properties.get("TanggalInvoice"); // (metadata dokumen)
 				Object value = dueDate.getObjectValue();
 				logger.debug("doc:" + doc.get_Name() + " bertanggal " + value.toString());

@@ -44,7 +44,7 @@ public class UpdateMetadataDokumen {
 		logger.info("object store name : " + objectStore.get_DisplayName());
 
 		String sql1 = "SELECT * FROM " + documentClass
-				+ " WHERE Nama_Dokumen= 'InvoiceABC.pdf' Author = 'Suryo Gumilar' ";
+				+ " WHERE Nama_Dokumen= 'InvoiceABC.pdf' AND Author = 'Suryo Gumilar' ";
 		Iterator<RepositoryRow> ceQueryIterator = CEQuery(sql1, objectStore);
 		while (ceQueryIterator.hasNext()) {
 
