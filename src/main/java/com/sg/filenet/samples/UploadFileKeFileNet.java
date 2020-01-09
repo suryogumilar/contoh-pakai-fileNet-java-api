@@ -29,12 +29,12 @@ import com.filenet.api.util.UserContext;
 
 public class UploadFileKeFileNet {
 	private static Logger logger = LogManager.getLogger(UploadFileKeFileNet.class.getName());
-	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
+	private static String url = "http://192.168.43.216:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
-	private static String password = "P4ssw0rd";
+	private static String password = "d1tk4p3l2018";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
-	private static String objectStoreName = "PROD-OBJS";
-	private static String docClass = "Dokumen_Invoice";
+	private static String objectStoreName = "DMS-DITKAPEL-OS";
+	private static String docClass = "SampleDocumentClass";
 
 	public static void main(String[] args) {
 		Connection connection = Factory.Connection.getConnection(url);
@@ -52,12 +52,21 @@ public class UploadFileKeFileNet {
 		Document documentNew = Factory.Document.createInstance(objectStore, docClass);
 
 		// isi metadata dokumen
-		String fileName = "InvoiceABC";
+		int countRand = (int) Math.round( Math.random()*100);
+		String fileName = "InvoiceABC-"+countRand;
 
 		com.filenet.api.property.Properties ppProperties = documentNew.getProperties();
-		ppProperties.putValue("Tanggal_Invoice", new Date());
-		ppProperties.putValue("Nama_Dokumen", fileName); // nama dokumen bisa juga sebagai metadata 
-		ppProperties.putValue("Author", "Suryo Gumilar"); // nama dokumen bisa juga sebagai metadata 
+		ppProperties.putValue("PTMTanggal", new Date());
+		ppProperties.putValue("PTMNama", fileName); // nama dokumen bisa juga sebagai metadata 
+		ppProperties.putValue("PTMPhone", 12345); 
+		
+		ppProperties.putValue("DocumentTitle", fileName); 
+		
+		// this is read only properties cannot be overide, 
+		// jika DocumentTitle diisi otomatis ini keisi dgn value yg sama
+		//----------
+		//ppProperties.putValue("Name", fileName);  
+		
 		// dst...
 
 		ContentElementList ceList = Factory.ContentElement.createList();
@@ -68,7 +77,7 @@ public class UploadFileKeFileNet {
 
 		InputStream in;
 		try {
-			in = new FileInputStream("C:/pathdokumen_dalam_lokal_machine/invoiceAbc.txt");
+			in = new FileInputStream("C:/Users/User/Downloads/sample_config_FAB-16483/docker-compose-cli.yaml");
 		} catch (FileNotFoundException e) {
 			return;
 		}
@@ -94,7 +103,7 @@ public class UploadFileKeFileNet {
 		// terdapat dalam FileNet Content Engine
 
 		Folder folderDalamFileNet = null;
-		String folderName = "/dokumen/invoice_folder/";
+		String folderName = "/Ditkapel";
 		folderDalamFileNet = Factory.Folder.fetchInstance(objectStore, folderName, null);
 
 		ReferentialContainmentRelationship folderFiling = folderDalamFileNet.file(documentNew,
@@ -102,6 +111,7 @@ public class UploadFileKeFileNet {
 		folderFiling.save(RefreshMode.REFRESH);
 		folderDalamFileNet.save(RefreshMode.REFRESH);
 
+		logger.debug("uploaded.."+fileName);
 		// logout dan disconnect dari API Filenet
 
 		UserContext.get().popSubject();

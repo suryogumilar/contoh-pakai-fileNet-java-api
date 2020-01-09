@@ -12,11 +12,11 @@ import com.filenet.api.core.ObjectStore;
 import com.filenet.api.util.UserContext;
 public class AmbilObjectStoreTertentu {
 	private static Logger logger = LogManager.getLogger(AmbilObjectStoreTertentu.class.getName());
-	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
+	private static String url = "http://192.168.43.216:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
-	private static String password = "P4ssw0rd";
+	private static String password = "d1tk4p3l2018";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
-	private static String objectStoreName="PROD-OBJS";
+	private static String objectStoreName="DMS-DITKAPEL-OS";
 	public static void main(String[] args) {
 		Connection connection = Factory.Connection.getConnection(url);
 		// authentikasi

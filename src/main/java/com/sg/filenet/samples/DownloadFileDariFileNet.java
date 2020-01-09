@@ -29,12 +29,12 @@ import com.filenet.api.util.UserContext;
 
 public class DownloadFileDariFileNet {
 	private static Logger logger = LogManager.getLogger(DownloadFileDariFileNet.class.getName());
-	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
+	private static String url = "http://192.168.43.216:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
-	private static String password = "P4ssw0rd";
+	private static String password = "d1tk4p3l2018";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
-	private static String objectStoreName = "PROD-OBJS";
-	private static String documentClass = "Dokumen_Invoice";
+	private static String objectStoreName = "DMS-DITKAPEL-OS";
+	private static String documentClass = "SampleDocumentClass";
 	
 	public static void main(String[] args) {
 		Connection connection = Factory.Connection.getConnection(url);
@@ -50,7 +50,7 @@ public class DownloadFileDariFileNet {
 		
 		logger.info("object store name : "+objectStore.get_DisplayName());
 
-		String sql1 = "SELECT * FROM "+documentClass+" WHERE Nama_Dokumen= 'InvoiceABC.pdf' Author = 'Suryo Gumilar' ";
+		String sql1 = "SELECT * FROM "+documentClass+" WHERE DocumentTitle= 'InvoiceABC-83' AND PTMPhone = 12345 ";
 		Iterator<RepositoryRow> ceQueryIterator = CEQuery(sql1, objectStore);
 		while (ceQueryIterator.hasNext()) {
 
@@ -70,10 +70,11 @@ public class DownloadFileDariFileNet {
 
 				InputStream is = ct.accessContentStream();
 				try {
-					FileOutputStream fos = new FileOutputStream("C:/folder_untuk_save_ke_lokal_pc/namaDockumentYangakanDisave.pdf");
+					FileOutputStream fos = new FileOutputStream("C:/Users/User/Downloads/sample_config_FAB-16483/docker-compose-cli.bakup");
 					byte[] b = new byte[512];
-					while (is.read(b) > 0) {
-						fos.write(b);
+					int readByte=0;
+					while ((readByte = is.read(b)) > 0) {
+						fos.write(b,0,readByte);
 						fos.flush();
 					}
 					fos.close();

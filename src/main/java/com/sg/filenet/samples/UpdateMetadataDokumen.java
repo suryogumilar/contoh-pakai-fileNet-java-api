@@ -1,5 +1,6 @@
 package com.sg.filenet.samples;
 
+import java.util.Date;
 import java.util.Iterator;
 
 import javax.security.auth.Subject;
@@ -22,13 +23,13 @@ import com.filenet.api.query.SearchScope;
 import com.filenet.api.util.UserContext;
 
 public class UpdateMetadataDokumen {
-	private static String url = "http://192.168.1.187:9080/wsi/FNCEWS40MTOM/";
+	private static String url = "http://192.168.43.216:9080/wsi/FNCEWS40MTOM/";
 	private static String user = "p8admin";
-	private static String password = "P4ssw0rd";
+	private static String password = "d1tk4p3l2018";
 	private static String optionalJAASStanzaName = "FileNetP8WSI";
-	private static String objectStoreName = "PROD-OBJS";
+	private static String objectStoreName = "DMS-DITKAPEL-OS";
 	private static Logger logger = LogManager.getLogger(UpdateMetadataDokumen.class.getName());
-	private static String documentClass = "Dokumen_Invoice";
+	private static String documentClass = "SampleDocumentClass";
 
 	public static void main(String[] argd) {
 		Connection connection = Factory.Connection.getConnection(url);
@@ -44,7 +45,7 @@ public class UpdateMetadataDokumen {
 		logger.info("object store name : " + objectStore.get_DisplayName());
 
 		String sql1 = "SELECT * FROM " + documentClass
-				+ " WHERE Nama_Dokumen= 'InvoiceABC.pdf' Author = 'Suryo Gumilar' ";
+				+ " WHERE DocumentTitle= 'InvoiceABC-83' AND PTMPhone = 12345 ";
 		Iterator<RepositoryRow> ceQueryIterator = CEQuery(sql1, objectStore);
 		while (ceQueryIterator.hasNext()) {
 
@@ -52,7 +53,7 @@ public class UpdateMetadataDokumen {
 			Document document = getDocumentFromRepoRow(repRow);
 
 			Properties properties = document.getProperties();
-			properties.putObjectValue("Author", "Gumilar Suryo");
+			properties.putObjectValue("PTMTanggal", new Date());
 			// commit
 			document.save(RefreshMode.REFRESH);
 		}
